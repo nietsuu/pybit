@@ -255,6 +255,9 @@ class _WebSocketManager:
         self._send_custom_ping()
 
     def _send_custom_ping(self):
+        if self.exited:
+            return
+
         self.ws.send(self.custom_ping_message)
 
     def _send_initial_ping(self):
